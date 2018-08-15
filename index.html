@@ -8,20 +8,27 @@
   <body>
     <div class="g-signin2" data-onsuccess="onSignIn" data-theme="dark"></div>
     <a href="#" onclick="signOut();">Sign out</a>
+    <br>
+
+Id Profile<br><br><input type="text"  id='h1'  /><br>
+Name<br><input type="text" id="Name"  /><br>
+Email<br><input type="text" id='Email'  /><br>
+your Img<br><img  src="" style="width:300px;height:300px;" alt='profile' id='img'/><br>
     <script>
       function onSignIn(googleUser) {
   var profile = googleUser.getBasicProfile();
-  console.log('ID: ' + profile.getId()); // Do not send to your backend! Use an ID token instead.
-  console.log('Name: ' + profile.getName());
-  console.log('Image URL: ' + profile.getImageUrl());
-  console.log('Email: ' + profile.getEmail()); // This is null if the 'email' scope is not present.
-};
+ document.getElementById('h1').value=profile.getId();
+document.getElementById("Name").value=profile.getName();
+document.getElementById("Email").value=profile.getEmail();
+  document.getElementById('img').src=profile.getImageUrl();
+        
+}
       function signOut() {
     var auth2 = gapi.auth2.getAuthInstance();
     auth2.signOut().then(function () {
       console.log('User signed out.');
     });
-  };
+  }
     </script>
   </body>
 </html>
