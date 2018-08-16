@@ -53,9 +53,7 @@
   var profile = googleUser.getBasicProfile();
  $('.signIn').css('display','none');
         $('.data').css('display', 'block');
-        $('#pic').att('src',profile.getImageUrl());
-        $('#email').text(profile.getEmail());
-        $('#name').text(profile.getName());
+        alert('you are in');
         
 }
       function signOut() {
