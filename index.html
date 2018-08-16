@@ -29,7 +29,7 @@
           <div class="row text-center">
               <div class="contenu">
                   <div class="signIn">
-                  <div class="g-signin2" data-onsuccess="onSignIn" style="margin: 10px"></div>
+                  <div class="g-signin2" data-onsuccess="onSignIn"></div>
                  <fb:login-button scope="public_profile,email" style="margin: 10px" onlogin="checkLoginState();">
 </fb:login-button>
                 </div>
@@ -49,8 +49,7 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 
     <script>
-     $(function(){
-      function onSignIn(googleUser) {
+       function onSignIn(googleUser) {
   var profile = googleUser.getBasicProfile();
  $('.signIn').css('display','none');
         $('.data').css('display', 'block');
@@ -66,7 +65,6 @@
          $('.data').css('display', 'none');
     });
   }
-     });
     </script>
    
 
