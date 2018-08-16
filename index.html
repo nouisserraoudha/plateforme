@@ -28,12 +28,12 @@
     <div class="container">
           <div class="row text-center">
               <div class="contenu">
-                  <div class="signIn">
+                  <div>
                   <div class="g-signin2" data-onsuccess="onSignIn" style="margin: 10px"></div>
                  <fb:login-button scope="public_profile,email" style="margin: 10px" onlogin="checkLoginState();">
 </fb:login-button>
                 </div>
-                  <div class="data">
+                  <div>
                   <a href="#" onclick="signOut();">Sign out</a>
                   <img id="pic"/>
                   <p id="email"></p>
@@ -55,7 +55,6 @@
         $('.data').css('display', 'block');
         $('#pic').att('src',profile.getImageUrl());
         $('#email').text(profile.getEmail());
-        $('#name').text(profile.getName());
         
 }
       function signOut() {
