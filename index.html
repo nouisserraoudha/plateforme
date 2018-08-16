@@ -4,41 +4,70 @@
     <meta name="google-signin-scope" content="profile email">
     <meta name="google-signin-client_id" content="743277721390-gikm4pogcfnomddphjj7mo3qn45bbdv0.apps.googleusercontent.com">
     <script src="https://apis.google.com/js/platform.js" async defer></script>
+    <style>
+          body{
+              background: url('http://blog.visme.co/wp-content/uploads/2017/07/50-Beautiful-and-Minimalist-Presentation-Backgrounds-03.jpg');
+          }
+                     .data{
+              display: none;
+          }
+          .contenu {
+              background-color: rgba(255,255,255,0.3);
+              margin: 100px auto;
+             width:50%;
+              height: 400px;
+            
+          }
+      .signIn {
+        display:block;
+      }
+             </style>
   </head>
   <body>
-    <div class="g-signin2" data-onsuccess="onSignIn" data-theme="dark"></div>
-    <a href="#" onclick="signOut();">Sign out</a>
-    <br>
+    <div class="container">
+          <div class="row text-center">
+              <div class="contenu">
+                  <div class="signIn">
+                  <div class="g-signin2" data-onsuccess="onSignIn" style="margin: 10px"></div>
+                 <fb:login-button scope="public_profile,email" style="margin: 10px" onlogin="checkLoginState();">
+</fb:login-button>
+                </div>
+                  <div class="data">
+                  <a href="#" onclick="signOut();">Sign out</a>
+                  <img id="pic"/>
+                  <p id="email"></p>
+                   <p id="name"></p>   
+                  </div>
+                   <div id="status"></div>
+                
+              </div>
+          </div>
+      </div>
+    
+   
 
-Id Profile<br><br><input type="text"  id='h1'  /><br>
-Name<br><input type="text" id="Name"  /><br>
-Email<br><input type="text" id='Email'  /><br>
-your Img<br><img  src="" style="width:300px;height:300px;" alt='profile' id='img'/><br>
+
     <script>
       function onSignIn(googleUser) {
   var profile = googleUser.getBasicProfile();
- document.getElementById('h1').value=profile.getId();
-document.getElementById("Name").value=profile.getName();
-document.getElementById("Email").value=profile.getEmail();
-  document.getElementById('img').src=profile.getImageUrl();
+ $('.signIn').css('display','none');
+        $('.data').css('display', 'block');
+        $('#pic').att('src',profile.getImageUrl());
+        $('#email').text(profile.getEmail());
+        $('#name').text(profile.getName());
         
 }
       function signOut() {
     var auth2 = gapi.auth2.getAuthInstance();
     auth2.signOut().then(function () {
-      console.log('User signed out.');
-      document.getElementById('h1').value="";
-document.getElementById("Name").value="";
-document.getElementById("Email").value="";
-  document.getElementById('img').src="";
+      alert('you have been succefully logged out');
+        $('.signIn').css('display','block');
+         $('.data').css('display', 'none');
     });
   }
     </script>
-    <fb:login-button scope="public_profile,email" onlogin="checkLoginState();">
-</fb:login-button>
+   
 
-<div id="status">
-</div>
     
     <script>
   // This is called with the results from from FB.getLoginStatus().
